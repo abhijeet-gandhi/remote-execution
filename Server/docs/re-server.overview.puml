@@ -1,0 +1,21 @@
+title Remote Executor Server
+
+participant Server
+participant Agent
+participant DB
+
+Agent -> Server: Authenticate, present Agent TLS
+Server --> Server: Validate client TLS
+Server --> OCSP: Check for blocked certs
+opt if Agent cert is blocked
+    OCSP --> Server: Invalid
+    Server --> Agent: Invalid cert response
+end
+
+Server --> Agent: Preset Server TLS
+Agent --> Agent: Validate server TLS
+Agent -> OCSP: Check for blocked certs of server
+opt if Server cert is blocked
+    OCSP --> Agent: Invalid
+    Agent --> Agent: Log invalid server and exit
+end
