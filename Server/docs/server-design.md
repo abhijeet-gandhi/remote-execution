@@ -13,4 +13,21 @@
 
 ## Sequence diagrams
 
-![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/plantuml/plantuml-server/master/src/main/webapp/resource/test2diagrams.txt)
+```mermaid
+sequenceDiagram
+Agent -> Server: Authenticate, present Agent TLS
+Server --> Server: Validate client TLS
+Server --> OCSP: Check for blocked certs
+opt if Agent cert is blocked
+    OCSP --> Server: Invalid
+    Server --> Agent: Invalid cert response
+end
+
+Server --> Agent: Preset Server TLS
+Agent --> Agent: Validate server TLS
+Agent -> OCSP: Check for blocked certs of server
+opt if Server cert is blocked
+    OCSP --> Agent: Invalid
+    Agent --> Agent: Log invalid server and exit
+end
+```
