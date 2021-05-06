@@ -1,4 +1,4 @@
-title Remote Executor Server
+title Authentication
 
 participant Server
 participant Agent

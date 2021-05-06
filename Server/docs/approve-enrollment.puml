@@ -1,0 +1,29 @@
+title Enrollment-Approval
+
+participant User
+participant Server
+participant DB
+
+User -> Server: Fetch Agents pending approval
+Server -> DB: Pull list
+DB --> Server: List of awaiting approval agents
+Server --> User: List
+
+opt if Agent is approved
+    User -> Server: Approve
+    Server --> Server: Sign TLS
+    Server -> Storage: Upload signed TLS
+    Storage --> Server: Link
+
+    Server -> DB: Update status with link
+    DB --> Server: Confirmation
+end
+
+opt if Agent is rejected
+    User -> Server: Deny
+    Server -> DB: Update status with rejected
+    DB --> Server: Confirmation
+end
+
+
+Server --> User: Confirmation

@@ -1,0 +1,13 @@
+title Enroll
+
+participant Agent
+participant Server
+participant DB
+
+Agent -> Server: FQDN and TLS, register
+Server --> DB: Register Agent, status awaiting user approval
+DB --> Server: Confirmation
+Server --> Agent: Awaiting User approval
+User -> Server: Approve Agent enrollement
+Server --> Server: Signs Agent TLS
+Server --> User: Confirmation

@@ -1,0 +1,13 @@
+title Block
+
+participant User
+participant Server
+participant DB
+
+User -> Server: Agent, block
+Server -> DB: Mark Agent as disabled
+DB --> Server: Confirmation
+Server -> OCSP: Block Agent TLS
+OCSP --> Server: Confirmation
+
+Server --> User: Confirmation

@@ -1,0 +1,10 @@
+title Registration
+
+participant User
+participant Server
+participant DB
+
+User -> Server: Add new user details and roles
+Server --> DB: Registers user
+DB --> Server: Confirmation
+Server --> User: Confirmation
