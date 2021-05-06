@@ -1,5 +1,8 @@
 title Enrollment-Approval
 
+skinparam monochrome true
+skinparam backgroundColor #fefefe
+
 participant User
 participant Server
 participant DB

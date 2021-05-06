@@ -1,5 +1,8 @@
 title Enroll
 
+skinparam monochrome true
+skinparam backgroundColor #fefefe
+
 participant Agent
 participant Server
 participant DB

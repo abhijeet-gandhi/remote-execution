@@ -1,5 +1,8 @@
 title Authentication
 
+skinparam monochrome true
+skinparam backgroundColor #fefefe
+
 participant Server
 participant Agent
 participant DB

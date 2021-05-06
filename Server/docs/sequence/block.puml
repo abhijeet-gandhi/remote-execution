@@ -1,5 +1,8 @@
 title Block
 
+skinparam monochrome true
+skinparam backgroundColor #fefefe
+
 participant User
 participant Server
 participant DB
